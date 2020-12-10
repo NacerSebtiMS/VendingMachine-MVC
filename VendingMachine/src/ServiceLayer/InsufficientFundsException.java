@@ -9,6 +9,12 @@ package ServiceLayer;
  *
  * @author nacer
  */
-class InsufficientFundsException extends Exception {
+public class InsufficientFundsException extends Exception {
+    InsufficientFundsException(String message){
+        super(message);
+    }
+    InsufficientFundsException(String message, Exception e) {
+        super(message, e);
+    }
     
 }

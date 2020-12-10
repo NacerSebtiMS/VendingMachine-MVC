@@ -16,8 +16,34 @@ public class Change {
     int nickels; // 5 cents
     int pennies; // 1 cent
     
-    public Change(float input){
-        
+    public Change(float input) throws InsufficientFundsException{
+        if(input<0){
+            throw new InsufficientFundsException("Not enough funds.");
+        } else {
+            int cents = (int) (input*100);
+            int[] change;
+            
+            change = euclideanDivision(cents,100);
+            this.dollars = change[0];
+            
+            change = euclideanDivision(change[1],25);  
+            this.quarters = change[0];
+            
+            change = euclideanDivision(change[1],10);  
+            this.dimes = change[0];
+            
+            change = euclideanDivision(change[1],5);  
+            this.nickels = change[0];
+            
+            this.pennies = change[1];
+        }
+    }
+    
+    private int[] euclideanDivision(int a, int b){
+        int r = a%b;
+        int q = (a - r)/b;
+        int[] div = {q,r};
+        return div;
     }
     
     // Functions to compute the change
