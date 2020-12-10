@@ -10,6 +10,10 @@ package View;
  * @author nacer
  */
 public interface UserIOInterface {
+    
+    public void print(String msgPrompt);
+    public String readString(String msgPrompt);
+    
     public float readFloat(String msgPrompt);
     public float readFloat(String msgPrompt, float min);
     

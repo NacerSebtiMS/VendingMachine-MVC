@@ -11,4 +11,6 @@ package View;
  */
 public class VendingMachineView {
     
+    
+    
 }
