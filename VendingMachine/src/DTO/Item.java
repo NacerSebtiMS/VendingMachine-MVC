@@ -19,7 +19,7 @@ public class Item {
     public void setName(String name) { this.name = name; }
     
     public float getCost(){ return this.cost; }
-    public void setName(float cost) { this.cost = cost; }
+    public void setCost(float cost) { this.cost = cost; }
     
     public int getLeft(){ return this.left; }
     public void setLeft(int left) { this.left = left; }

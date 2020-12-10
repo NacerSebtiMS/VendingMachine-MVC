@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
-
-import DTO.Item;
+package ServiceLayer;
 
 /**
  *
  * @author nacer
  */
-public interface VendingMachineAuditInterface {
-    public void recordSale(Item item) throws CannotOpenFile;
+class NoItemInventoryException extends Exception {
     
 }

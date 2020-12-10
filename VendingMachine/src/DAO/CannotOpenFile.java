@@ -5,15 +5,10 @@
  */
 package DAO;
 
-import DTO.Item;
-import java.util.ArrayList;
-
 /**
  *
  * @author nacer
  */
-public class VendingMachineDAO implements VendingMachineDAOInterface {
-    private ArrayList<Item> items;
+class CannotOpenFile extends Exception {
     
-    public ArrayList<Item> getItems(){ return this.items; }
 }
