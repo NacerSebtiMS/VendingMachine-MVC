@@ -5,6 +5,7 @@
  */
 package ServiceLayer;
 
+import DAO.CannotOpenFile;
 import DAO.VendingMachineDAO;
 import DTO.Item;
 
@@ -15,7 +16,7 @@ import DTO.Item;
 public class VendingMachineServiceLayer implements VendingMachineServiceLayerInterface {
     VendingMachineDAO dao;
     
-    VendingMachineServiceLayer(){
+    VendingMachineServiceLayer() throws CannotOpenFile{
         this.dao = new VendingMachineDAO();
     }
 
