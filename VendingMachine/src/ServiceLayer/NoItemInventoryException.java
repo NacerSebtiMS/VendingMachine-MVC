@@ -9,7 +9,7 @@ package ServiceLayer;
  *
  * @author nacer
  */
-class NoItemInventoryException extends Exception {
+public class NoItemInventoryException extends Exception {
     NoItemInventoryException(String message){
         super(message);
     }
