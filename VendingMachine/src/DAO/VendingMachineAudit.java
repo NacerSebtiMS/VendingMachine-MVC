@@ -9,6 +9,6 @@ package DAO;
  *
  * @author nacer
  */
-public class VendingMachineAudit {
+public class VendingMachineAudit implements VendingMachineAuditInterface {
     
 }

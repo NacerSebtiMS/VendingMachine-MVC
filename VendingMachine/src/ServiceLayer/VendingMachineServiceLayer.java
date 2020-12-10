@@ -9,6 +9,6 @@ package ServiceLayer;
  *
  * @author nacer
  */
-public class VendingMachineServiceLayer {
+public class VendingMachineServiceLayer implements VendingMachineServiceLayerInterface {
     
 }
