@@ -65,17 +65,15 @@ public class VendingMachineDAO implements VendingMachineDAOInterface {
         PrintWriter output;
         try{
             output = new PrintWriter(new FileWriter (dataFile));
+            for (Item i : items ){
+                output.println(i.getName() + "::" + i.getCost() + "::" + i.getLeft());
+                output.println(i);
+            }
+            output.flush();
+            output.close();
         } catch (IOException exception) {
             throw new CannotOpenFile("Cannot write to the file.");
-        }
-        for (Item i : items )
-        {
-            output.println(i.getName() + "::" + i.getCost() + "::" + i.getLeft());
-            output.println(i);
-        }
-        output.flush();
-        output.close();
-        
+        }    
     }
     
     public void updateItem(String itemName, int left) // Updates an item, we will just remove one from the stock
