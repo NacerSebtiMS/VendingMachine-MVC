@@ -9,6 +9,11 @@ package DAO;
  *
  * @author nacer
  */
-class CannotOpenFile extends Exception {
-    
+public class CannotOpenFile extends Exception {
+    CannotOpenFile(String message){
+        super(message);
+    }
+    CannotOpenFile(String message, Exception e) {
+        super(message, e);
+    }
 }

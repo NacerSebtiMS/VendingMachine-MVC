@@ -14,6 +14,12 @@ public class Item {
     private float cost;// Item cost
     private int left;// Number of items in inventory
     
+    public Item(String name, float cost, int left){
+        this.name = name;
+        this.cost = cost;
+        this.left = left;
+    }
+    
     // getters + setters
     public String getName(){ return this.name; }
     public void setName(String name) { this.name = name; }
