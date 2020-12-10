@@ -16,7 +16,7 @@ public class VendingMachineController {
     }
     
     public void run(){
-        
+        // Main loop use view functions for the display
     }
     
 }
