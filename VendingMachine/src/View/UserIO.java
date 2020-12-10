@@ -32,6 +32,34 @@ public class UserIO implements UserIOInterface {
     public float readFloat(String msgPrompt)
     {
         boolean invalidInput = true;
+        float num = 0;
+        while (invalidInput) {
+            try {
+                String stringValue = this.readString(msgPrompt);
+                num = Float.parseFloat(stringValue);
+                invalidInput = false; 
+            } catch (NumberFormatException e) {
+                this.print("Input error. Please try again.");
+            }
+        }
+        return num;    
+    }
+    
+    @Override
+    public float readFloat(String msgPrompt, float min)
+    {
+        float result;
+        do {
+            result = readFloat(msgPrompt);
+        } while (result < min);
+
+        return result;
+    }
+    
+    @Override
+    public int readInt(String msgPrompt)
+    {
+        boolean invalidInput = true;
         int num = 0;
         while (invalidInput) {
             try {
@@ -42,22 +70,17 @@ public class UserIO implements UserIOInterface {
                 this.print("Input error. Please try again.");
             }
         }
-        return num;    }
-    
-    @Override
-    public float readFloat(String msgPrompt, float min)
-    {
-    }
-    
-    @Override
-    public int readInt(String msgPrompt)
-    {
-        
+        return num;
     }        
             
     @Override
     public int readInt(String msgPrompt, int min, int max)
     {
-    
+        int result;
+        do {
+            result = readInt(msgPrompt);
+        } while (result < min || result > max);
+
+        return result;
     }
 }
