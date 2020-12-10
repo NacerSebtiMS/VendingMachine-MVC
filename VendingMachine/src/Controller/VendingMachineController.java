@@ -11,4 +11,12 @@ package Controller;
  */
 public class VendingMachineController {
     
+    public VendingMachineController(){
+        
+    }
+    
+    public void run(){
+        // Main loop use view functions for the display
+    }
+    
 }

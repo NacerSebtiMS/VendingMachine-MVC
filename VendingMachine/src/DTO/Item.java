@@ -10,5 +10,17 @@ package DTO;
  * @author nacer
  */
 public class Item {
+    private String name;// Item name
+    private float cost;// Item cost
+    private int left;// Number of items in inventory
     
+    // getters + setters
+    public String getName(){ return this.name; }
+    public void setName(String name) { this.name = name; }
+    
+    public float getCost(){ return this.cost; }
+    public void setName(float cost) { this.cost = cost; }
+    
+    public int getLeft(){ return this.left; }
+    public void setLeft(int left) { this.left = left; }
 }
