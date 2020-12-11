@@ -6,13 +6,16 @@
 package Application;
 
 import Controller.VendingMachineController;
+import DAO.CannotOpenFile;
+import ServiceLayer.InsufficientFundsException;
+import ServiceLayer.NoItemInventoryException;
 
 /**
  *
  * @author nacer
  */
 public class Application {
-    public static void main(String[] args){
+    public static void main(String[] args) throws CannotOpenFile, InsufficientFundsException, NoItemInventoryException{
         VendingMachineController controller = new VendingMachineController();
         controller.run();
     }

@@ -6,6 +6,7 @@
 package View;
 
 import DTO.Item;
+import ServiceLayer.Change;
 import java.util.ArrayList;
 
 /**
@@ -29,5 +30,26 @@ public class VendingMachineView {
     public float askForMoney(){
         io.print("Insert money.\t\t0 or less will turn off the machine.");
         return io.readFloat("Invalid input. Try again.");
-    } 
+    }
+    
+    public int askForChoice(int max){
+        io.print("Enter 0 to turn off the machine");
+        io.print("Choose the item you want to buy");
+        return io.readInt("Enter a valid option",0,max);
+    }
+    
+    public float notEnoughMoney(float moneyInsideMachine){
+        io.print("Insufficient funds. Insert more money");
+        io.print(moneyInsideMachine+"$");
+        return io.readFloat("Invalid input. Try again.");
+    }
+    
+    public void displayChange(Change c){
+        io.print("Change :");
+        if(c.getDollars()>0) { io.print(c.getDollars() + " Dollars"); }
+        if(c.getQuarters()>0) { io.print(c.getQuarters() + " Quarters"); }
+        if(c.getDimes()>0) { io.print(c.getDimes() + " Dimes"); }
+        if(c.getNickels()>0) { io.print(c.getNickels() + " Nickels"); }
+        if(c.getPennies()>0) { io.print(c.getPennies() + " Pennies"); }
+    }
 }

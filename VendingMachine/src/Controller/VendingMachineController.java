@@ -7,6 +7,9 @@ package Controller;
 
 import DAO.CannotOpenFile;
 import DTO.Item;
+import ServiceLayer.Change;
+import ServiceLayer.InsufficientFundsException;
+import ServiceLayer.NoItemInventoryException;
 import ServiceLayer.VendingMachineServiceLayer;
 import View.VendingMachineView;
 import java.util.ArrayList;
@@ -24,10 +27,12 @@ public class VendingMachineController {
         this.view = new VendingMachineView();
     }
     
-    public void run(){
+    public void run() throws CannotOpenFile, InsufficientFundsException, NoItemInventoryException{
         // Main loop use view functions for the display
         boolean machineOn = true;
         float money;
+        int choice;
+        Change change;
         while(machineOn){
             ArrayList<Item> items = this.service.displayableItemDetailList();
             displayMenu(items);
@@ -35,6 +40,16 @@ public class VendingMachineController {
             if(money<=0){
                 machineOn = false;
                 turnOff();
+            } else {
+                choice = menuChoice(items.size());
+                do{                 
+                    change = service.computeChange( money, items.get(choice).getCost() );
+                    if(change.getDollars() == -1){
+                        money += insufficientFunds(money);
+                    }
+                }while(change.getDollars() == -1);
+                confirmPurchase( items.get(choice) );
+                displayChange(change);
             }
         }
     }
@@ -44,11 +59,27 @@ public class VendingMachineController {
     }
     
     private float inputMoney(){
-        return view.askForMoney();
+        return this.view.askForMoney();
     }
     
-    private void turnOff(){
-        
+    private void turnOff() throws CannotOpenFile{
+        this.service.turnOff();
+    }
+    
+    private int menuChoice(int listSize){
+        return this.view.askForChoice(listSize);
+    }
+    
+    private float insufficientFunds(float amountIn){
+        return this.view.notEnoughMoney(amountIn);
+    }
+    
+    private void displayChange(Change c){
+        this.view.displayChange(c);
+    }
+    
+    private void confirmPurchase(Item i) throws NoItemInventoryException, CannotOpenFile{
+        this.service.updateItem(i.getName());
     }
     
 }

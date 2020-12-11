@@ -25,7 +25,15 @@ public class VendingMachineServiceLayer implements VendingMachineServiceLayerInt
 
     @Override
     public Change computeChange(float userMoney, float itemCost) throws InsufficientFundsException {
-        return new Change(userMoney - itemCost);
+        float leftover = userMoney - itemCost;
+        Change c;
+        if(leftover<0){
+            c = new Change(0);
+            c.setDollars(-1);
+        } else {
+            c = new Change(leftover);
+        }
+        return c;
     }
 
     @Override
