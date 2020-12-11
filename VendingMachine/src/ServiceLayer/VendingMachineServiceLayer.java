@@ -21,6 +21,7 @@ public class VendingMachineServiceLayer implements VendingMachineServiceLayerInt
     
     public VendingMachineServiceLayer() throws CannotOpenFile{
         this.dao = new VendingMachineDAO();
+        this.log = new VendingMachineAudit();
     }
 
     @Override

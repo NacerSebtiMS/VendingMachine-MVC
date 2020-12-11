@@ -68,7 +68,6 @@ public class VendingMachineDAO implements VendingMachineDAOInterface {
             output = new PrintWriter(new FileWriter (DATAFILE));
             for (Item i : items ){
                 output.println(i.getName() + "::" + i.getCost() + "::" + i.getLeft());
-                output.println(i);
             }
             output.flush();
             output.close();

@@ -21,6 +21,7 @@ public class VendingMachineView {
     }
     
     public void displayMenu(ArrayList<Item> items){
+        io.print("");
         for(int i = 0; i<items.size(); i++){
             io.print( (i+1) + "- " + items.get(i).getName() + " " + items.get(i).getCost() + "$" );
         }
@@ -28,23 +29,28 @@ public class VendingMachineView {
     }
     
     public float askForMoney(){
-        io.print("Insert money.\t\t0 or less will turn off the machine.");
-        return io.readFloat("Invalid input. Try again.");
+        io.print("");
+        io.print("Insert money.");
+        io.print("0 or less will turn off the machine.");
+        return io.readFloat("Enter a valid option");
     }
     
     public int askForChoice(int max){
+        io.print("");
         io.print("Enter 0 to turn off the machine");
         io.print("Choose the item you want to buy");
-        return io.readInt("Enter a valid option",0,max);
+        return io.readInt("Enter a valid option.",0,max);
     }
     
     public float notEnoughMoney(float moneyInsideMachine){
+        io.print("");
         io.print("Insufficient funds. Insert more money");
         io.print(moneyInsideMachine+"$");
-        return io.readFloat("Invalid input. Try again.");
+        return io.readFloat("Enter a valid option.");
     }
     
     public void displayChange(Change c){
+        io.print("");
         io.print("Change :");
         if(c.getDollars()>0) { io.print(c.getDollars() + " Dollars"); }
         if(c.getQuarters()>0) { io.print(c.getQuarters() + " Quarters"); }

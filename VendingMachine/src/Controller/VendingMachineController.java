@@ -67,7 +67,7 @@ public class VendingMachineController {
     }
     
     private int menuChoice(int listSize){
-        return this.view.askForChoice(listSize);
+        return this.view.askForChoice(listSize) - 1;
     }
     
     private float insufficientFunds(float amountIn){

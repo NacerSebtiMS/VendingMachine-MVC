@@ -19,15 +19,17 @@ import java.util.logging.Logger;
  * @author nacer
  */
 public class VendingMachineAudit implements VendingMachineAuditInterface {
-    private String logFile = "log.txt";
+    private static final String LOGFILE = "log.txt";
     @Override
     public void recordSale(Item item) throws CannotOpenFile {
         try {
-            PrintWriter out = new PrintWriter(new FileWriter(logFile,true));
+            PrintWriter out = new PrintWriter(new FileWriter(LOGFILE,true));
             SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
             Date date = new Date(System.currentTimeMillis());
             String logMessage = "["+formatter.format(date)+"] Sold : "+item.getName()+" "+item.getCost()+"$";
             out.println(logMessage);
+            out.flush();
+            out.close();
         } catch (IOException ex) {
             throw new CannotOpenFile("Cannot log.");
         }
