@@ -6,7 +6,7 @@
 package View;
 
 import DTO.Item;
-import ServiceLayer.Change;
+import DTO.Change;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 

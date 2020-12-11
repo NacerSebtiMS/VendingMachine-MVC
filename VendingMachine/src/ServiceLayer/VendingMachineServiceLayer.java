@@ -5,6 +5,7 @@
  */
 package ServiceLayer;
 
+import DTO.Change;
 import DAO.CannotOpenFile;
 import DAO.VendingMachineAudit;
 import DAO.VendingMachineDAO;

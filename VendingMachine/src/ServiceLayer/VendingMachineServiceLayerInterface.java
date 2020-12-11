@@ -5,6 +5,7 @@
  */
 package ServiceLayer;
 
+import DTO.Change;
 import DAO.CannotOpenFile;
 import DTO.Item;
 import java.math.BigDecimal;

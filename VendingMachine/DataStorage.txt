@@ -1,3 +1,3 @@
-Coca cola::2.4::3
+Coca cola::2.4::2
 Chocolate::1.0::5
 Water::1.8::18

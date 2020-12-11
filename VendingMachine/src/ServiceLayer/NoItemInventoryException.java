@@ -10,10 +10,10 @@ package ServiceLayer;
  * @author nacer
  */
 public class NoItemInventoryException extends Exception {
-    NoItemInventoryException(String message){
+    public NoItemInventoryException(String message){
         super(message);
     }
-    NoItemInventoryException(String message, Exception e) {
+    public NoItemInventoryException(String message, Exception e) {
         super(message, e);
     }
 }

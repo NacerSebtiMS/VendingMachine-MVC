@@ -7,7 +7,7 @@ package Controller;
 
 import DAO.CannotOpenFile;
 import DTO.Item;
-import ServiceLayer.Change;
+import DTO.Change;
 import ServiceLayer.InsufficientFundsException;
 import ServiceLayer.NoItemInventoryException;
 import ServiceLayer.VendingMachineServiceLayer;
