@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class VendingMachineDAO implements VendingMachineDAOInterface {
     private ArrayList<Item> items;
-    private String dataFile = "DataStorage.txt";
+    private static final String DATAFILE = "DataStorage.txt";
     
     public VendingMachineDAO() throws CannotOpenFile{
         this.getAllItemsFromStorage();
@@ -34,29 +34,30 @@ public class VendingMachineDAO implements VendingMachineDAOInterface {
     {
         // Data unmarshaling
         Scanner sc;
+        items = new ArrayList<>();
         try {
             sc = new Scanner(
-            new BufferedReader(new FileReader(dataFile)));
+            new BufferedReader(new FileReader(DATAFILE)));
+            // go through the file line by line
+            String[] chunks;
+            Item item;
+            while (sc.hasNextLine()) {
+                String currentLine = sc.nextLine();  
+                
+                // Split the input
+                chunks = currentLine.split("::");               
+
+                // Create the item
+                item = new Item(chunks[0], Float.parseFloat(chunks[1]),Integer.parseInt(chunks[2]));
+
+                // Store it in the ArrayList
+                items.add(item);
+            }
         } catch (FileNotFoundException ex) {
             throw new CannotOpenFile("File not found.");
         }
         
-        // go through the file line by line
-        String[] chunks;
-        Item item;
-        while (sc.hasNextLine()) {
-            String currentLine = sc.nextLine();  
-            
-            // Split the input
-            chunks = currentLine.split("::");
-            
-            // Create the item
-            
-            item = new Item(chunks[0], Float.parseFloat(chunks[1]),Integer.parseInt(chunks[2]));
-            
-            // Store it in the ArrayList
-            items.add(item);
-        }
+        
     }
     
     public void saveChangesInStorage() throws CannotOpenFile // Save all our changes in the file
@@ -64,7 +65,7 @@ public class VendingMachineDAO implements VendingMachineDAOInterface {
     {
         PrintWriter output;
         try{
-            output = new PrintWriter(new FileWriter (dataFile));
+            output = new PrintWriter(new FileWriter (DATAFILE));
             for (Item i : items ){
                 output.println(i.getName() + "::" + i.getCost() + "::" + i.getLeft());
                 output.println(i);
