@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.math.BigDecimal;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +49,7 @@ public class VendingMachineDAO implements VendingMachineDAOInterface {
                 chunks = currentLine.split("::");               
 
                 // Create the item
-                item = new Item(chunks[0], Double.parseDouble(chunks[1]),Integer.parseInt(chunks[2]));
+                item = new Item(chunks[0], BigDecimal.valueOf(Double.parseDouble(chunks[1])),Integer.parseInt(chunks[2]));
 
                 // Store it in the ArrayList
                 items.add(item);

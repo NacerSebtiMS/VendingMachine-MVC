@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author nacer
@@ -14,8 +16,8 @@ public interface UserIOInterface {
     public void print(String msgPrompt);
     public String readString(String msgPrompt);
     
-    public double readDouble(String msgPrompt);
-    public double readDouble(String msgPrompt, double min);
+    public BigDecimal readDouble(String msgPrompt);
+    public BigDecimal readDouble(String msgPrompt, BigDecimal min);
     
     public int readInt(String msgPrompt);
     public int readInt(String msgPrompt, int min, int max);

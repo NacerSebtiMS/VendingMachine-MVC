@@ -12,6 +12,7 @@ import ServiceLayer.InsufficientFundsException;
 import ServiceLayer.NoItemInventoryException;
 import ServiceLayer.VendingMachineServiceLayer;
 import View.VendingMachineView;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -30,14 +31,14 @@ public class VendingMachineController {
     public void run() throws CannotOpenFile, InsufficientFundsException, NoItemInventoryException{
         // Main loop use view functions for the display
         boolean machineOn = true;
-        double money;
+        BigDecimal money;
         int choice;
         Change change;
         while(machineOn){
             ArrayList<Item> items = this.service.displayableItemDetailList();
             displayMenu(items);
             money = inputMoney();
-            if(money<=0){
+            if(money.compareTo(BigDecimal.ZERO)<=0){
                 machineOn = false;
                 turnOff();
             } else {
@@ -45,12 +46,12 @@ public class VendingMachineController {
                 if(choice==-1){
                     machineOn = false;
                     turnOff();
-                    change = new Change(0);
+                    change = new Change(BigDecimal.ZERO);
                 } else {
                     do{
                         change = service.computeChange( money, items.get(choice).getCost() );
                         if(change.getDollars() == -1){
-                            money += insufficientFunds(money);
+                            money.add(insufficientFunds(money));
                         }
                     }while(change.getDollars() == -1);
                 }
@@ -69,7 +70,7 @@ public class VendingMachineController {
         }
     }
     
-    private double inputMoney(){
+    private BigDecimal inputMoney(){
         return this.view.askForMoney();
     }
     
@@ -81,7 +82,7 @@ public class VendingMachineController {
         return this.view.askForChoice(listSize) - 1;
     }
     
-    private double insufficientFunds(double amountIn){
+    private BigDecimal insufficientFunds(BigDecimal amountIn){
         return this.view.notEnoughMoney(amountIn);
     }
     

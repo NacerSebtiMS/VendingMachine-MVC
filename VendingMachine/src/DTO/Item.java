@@ -5,16 +5,18 @@
  */
 package DTO;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author nacer
  */
 public class Item {
     private String name;// Item name
-    private double cost;// Item cost
+    private BigDecimal cost;// Item cost
     private int left;// Number of items in inventory
     
-    public Item(String name, double cost, int left){
+    public Item(String name, BigDecimal cost, int left){
         this.name = name;
         this.cost = cost;
         this.left = left;
@@ -24,8 +26,8 @@ public class Item {
     public String getName(){ return this.name; }
     public void setName(String name) { this.name = name; }
     
-    public double getCost(){ return this.cost; }
-    public void setCost(double cost) { this.cost = cost; }
+    public BigDecimal getCost(){ return this.cost; }
+    public void setCost(BigDecimal cost) { this.cost = cost; }
     
     public int getLeft(){ return this.left; }
     public void setLeft(int left) { this.left = left; }

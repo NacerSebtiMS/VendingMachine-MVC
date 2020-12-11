@@ -5,6 +5,7 @@
  */
 package View;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 /**
@@ -29,14 +30,14 @@ public class UserIO implements UserIOInterface {
     }
     
     @Override
-    public double readDouble(String msgPrompt)
+    public BigDecimal readDouble(String msgPrompt)
     {
         boolean invalidInput = true;
-        double num = 0;
+        BigDecimal num = BigDecimal.ZERO;
         while (invalidInput) {
             try {
                 String stringValue = this.readString(msgPrompt);
-                num = Double.parseDouble(stringValue);
+                num = BigDecimal.valueOf(Double.parseDouble(stringValue));
                 invalidInput = false; 
             } catch (NumberFormatException e) {
                 this.print("Input error. Please try again.");
@@ -46,12 +47,12 @@ public class UserIO implements UserIOInterface {
     }
     
     @Override
-    public double readDouble(String msgPrompt, double min)
+    public BigDecimal readDouble(String msgPrompt, BigDecimal min)
     {
-        double result;
+        BigDecimal result;
         do {
             result = readDouble(msgPrompt);
-        } while (result < min);
+        } while (result.compareTo(min)<0);
 
         return result;
     }

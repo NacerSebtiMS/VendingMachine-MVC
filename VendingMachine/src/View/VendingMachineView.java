@@ -7,6 +7,7 @@ package View;
 
 import DTO.Item;
 import ServiceLayer.Change;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -24,11 +25,11 @@ public class VendingMachineView {
         io.print("");
     }
     
-    public void displayMenuItem(int itemNumber, String itemName, double itemCost){
+    public void displayMenuItem(int itemNumber, String itemName, BigDecimal itemCost){
         io.print( itemNumber + "- " + itemName + " " + itemCost + "$" );       
     }
     
-    public double askForMoney(){
+    public BigDecimal askForMoney(){
         io.print("");
         io.print("Insert money.");
         io.print("0 or less will turn off the machine.");
@@ -42,7 +43,7 @@ public class VendingMachineView {
         return io.readInt("Enter a valid option.",0,max);
     }
     
-    public double notEnoughMoney(double moneyInsideMachine){
+    public BigDecimal notEnoughMoney(BigDecimal moneyInsideMachine){
         io.print("");
         io.print("Insufficient funds. Insert more money");
         io.print(moneyInsideMachine+"$");

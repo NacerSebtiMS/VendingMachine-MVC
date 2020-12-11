@@ -5,6 +5,8 @@
  */
 package ServiceLayer;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author nacer
@@ -16,13 +18,14 @@ public class Change {
     int nickels; // 5 cents
     int pennies; // 1 cent
     
-    public Change(double input) throws InsufficientFundsException{
-        if(input<0){
+    public Change(BigDecimal input) throws InsufficientFundsException{
+        BigDecimal cents_bd = input.multiply( BigDecimal.valueOf(100) );
+        int cents = cents_bd.intValue();
+        if(cents<0){
             throw new InsufficientFundsException("Not enough funds.");
         } else {
             //int cents = (int) (input*100);
             int[] change;
-            int cents = (int) (input*100);
             
             change = euclideanDivision(cents,100);
             this.dollars = change[0];
