@@ -33,7 +33,7 @@ public class VendingMachineView {
         io.print("");
         io.print("Insert money.");
         io.print("0 or less will turn off the machine.");
-        return io.readBigDecimal("Enter you input money.");
+        return io.readBigDecimal("Enter your input money.");
     }
     
     public int askForChoice(int max){

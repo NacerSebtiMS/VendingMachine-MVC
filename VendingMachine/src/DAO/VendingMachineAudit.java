@@ -26,7 +26,7 @@ public class VendingMachineAudit implements VendingMachineAuditInterface {
             PrintWriter out = new PrintWriter(new FileWriter(LOGFILE,true));
             SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
             Date date = new Date(System.currentTimeMillis());
-            String logMessage = "["+formatter.format(date)+"] Sold : "+item.getName()+" "+item.getCost()+"$";
+            String logMessage = "["+formatter.format(date)+"] Sold : "+item.getName()+" "+item.getCost().toString()+"$";
             out.println(logMessage);
             out.flush();
             out.close();
