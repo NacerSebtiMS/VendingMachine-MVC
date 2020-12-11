@@ -39,6 +39,10 @@ public class Change {
         }
     }
     
+    public boolean noChange(){
+        return this.dollars == 0 && this.quarters == 0 && this.dimes == 0 && this.nickels == 0 && this.pennies == 0;
+    }
+    
     private int[] euclideanDivision(int a, int b){
         int r = a%b;
         int q = (a - r)/b;

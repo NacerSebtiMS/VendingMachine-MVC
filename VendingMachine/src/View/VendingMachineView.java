@@ -20,12 +20,12 @@ public class VendingMachineView {
         this.io = new UserIO();
     }
     
-    public void displayMenu(ArrayList<Item> items){
+    public void skipLine(){
         io.print("");
-        for(int i = 0; i<items.size(); i++){
-            io.print( (i+1) + "- " + items.get(i).getName() + " " + items.get(i).getCost() + "$" );
-        }
-        //return io.readInt("Enter a valid option", 0, items.size());
+    }
+    
+    public void displayMenuItem(int itemNumber, String itemName, float itemCost){
+        io.print( itemNumber + "- " + itemName + " " + itemCost + "$" );       
     }
     
     public float askForMoney(){
@@ -49,13 +49,15 @@ public class VendingMachineView {
         return io.readFloat("Enter a valid option.");
     }
     
-    public void displayChange(Change c){
+    public void displayChange(){
         io.print("");
         io.print("Change :");
-        if(c.getDollars()>0) { io.print(c.getDollars() + " Dollars"); }
-        if(c.getQuarters()>0) { io.print(c.getQuarters() + " Quarters"); }
-        if(c.getDimes()>0) { io.print(c.getDimes() + " Dimes"); }
-        if(c.getNickels()>0) { io.print(c.getNickels() + " Nickels"); }
-        if(c.getPennies()>0) { io.print(c.getPennies() + " Pennies"); }
+    }
+    public void displayChange(int amount, String coinType){
+        io.print(amount + " " + coinType);
+    }
+    public void displayNoChange(){
+        io.print("");
+        io.print("No Change to give back");
     }
 }

@@ -62,8 +62,11 @@ public class VendingMachineController {
         }
     }
     
-    private void displayMenu(ArrayList<Item> items){      
-        this.view.displayMenu(items);
+    private void displayMenu(ArrayList<Item> items){
+        this.view.skipLine();
+        for(int i = 0; i<items.size(); i++){
+            this.view.displayMenuItem(i+1, items.get(i).getName(), items.get(i).getCost());
+        }
     }
     
     private float inputMoney(){
@@ -83,7 +86,16 @@ public class VendingMachineController {
     }
     
     private void displayChange(Change c){
-        this.view.displayChange(c);
+        if(c.noChange()){
+            view.displayNoChange();
+        } else {
+            this.view.displayChange();
+            if(c.getDollars()>0) { view.displayChange(c.getDollars(), "Dollars"); }
+            if(c.getQuarters()>0) { view.displayChange(c.getQuarters(), "Quarters"); }
+            if(c.getDimes()>0) { view.displayChange(c.getDimes(), "Dimes"); }
+            if(c.getNickels()>0) { view.displayChange(c.getNickels(), "Nickels"); }
+            if(c.getPennies()>0) { view.displayChange(c.getPennies(), "Pennies"); }
+        }
     }
     
     private void confirmPurchase(Item i) throws NoItemInventoryException, CannotOpenFile{
