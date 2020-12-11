@@ -24,15 +24,15 @@ public class VendingMachineView {
         io.print("");
     }
     
-    public void displayMenuItem(int itemNumber, String itemName, float itemCost){
+    public void displayMenuItem(int itemNumber, String itemName, double itemCost){
         io.print( itemNumber + "- " + itemName + " " + itemCost + "$" );       
     }
     
-    public float askForMoney(){
+    public double askForMoney(){
         io.print("");
         io.print("Insert money.");
         io.print("0 or less will turn off the machine.");
-        return io.readFloat("Enter a valid option");
+        return io.readDouble("Enter a valid option");
     }
     
     public int askForChoice(int max){
@@ -42,11 +42,11 @@ public class VendingMachineView {
         return io.readInt("Enter a valid option.",0,max);
     }
     
-    public float notEnoughMoney(float moneyInsideMachine){
+    public double notEnoughMoney(double moneyInsideMachine){
         io.print("");
         io.print("Insufficient funds. Insert more money");
         io.print(moneyInsideMachine+"$");
-        return io.readFloat("Enter a valid option.");
+        return io.readDouble("Enter a valid option.");
     }
     
     public void displayChange(){

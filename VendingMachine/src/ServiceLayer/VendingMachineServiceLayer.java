@@ -25,11 +25,12 @@ public class VendingMachineServiceLayer implements VendingMachineServiceLayerInt
     }
 
     @Override
-    public Change computeChange(float userMoney, float itemCost) throws InsufficientFundsException {
-        int um, ic;
+    public Change computeChange(double userMoney, double itemCost) throws InsufficientFundsException {
+        /*int um, ic;
         um = (int) ( Math.ceil(userMoney*100) );
-        ic = (int) ( Math.ceil(itemCost*100) );
-        int leftover = um-ic;
+        ic = (int) ( Math.ceil(itemCost*100) );*/
+        double leftover = userMoney-itemCost;
+        //System.out.println(um + "\t" + ic);
         Change c;
         if(leftover<0){
             c = new Change(0);

@@ -14,8 +14,8 @@ public interface UserIOInterface {
     public void print(String msgPrompt);
     public String readString(String msgPrompt);
     
-    public float readFloat(String msgPrompt);
-    public float readFloat(String msgPrompt, float min);
+    public double readDouble(String msgPrompt);
+    public double readDouble(String msgPrompt, double min);
     
     public int readInt(String msgPrompt);
     public int readInt(String msgPrompt, int min, int max);

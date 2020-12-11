@@ -29,14 +29,14 @@ public class UserIO implements UserIOInterface {
     }
     
     @Override
-    public float readFloat(String msgPrompt)
+    public double readDouble(String msgPrompt)
     {
         boolean invalidInput = true;
-        float num = 0;
+        double num = 0;
         while (invalidInput) {
             try {
                 String stringValue = this.readString(msgPrompt);
-                num = Float.parseFloat(stringValue);
+                num = Double.parseDouble(stringValue);
                 invalidInput = false; 
             } catch (NumberFormatException e) {
                 this.print("Input error. Please try again.");
@@ -46,11 +46,11 @@ public class UserIO implements UserIOInterface {
     }
     
     @Override
-    public float readFloat(String msgPrompt, float min)
+    public double readDouble(String msgPrompt, double min)
     {
-        float result;
+        double result;
         do {
-            result = readFloat(msgPrompt);
+            result = readDouble(msgPrompt);
         } while (result < min);
 
         return result;

@@ -48,7 +48,7 @@ public class VendingMachineDAO implements VendingMachineDAOInterface {
                 chunks = currentLine.split("::");               
 
                 // Create the item
-                item = new Item(chunks[0], Float.parseFloat(chunks[1]),Integer.parseInt(chunks[2]));
+                item = new Item(chunks[0], Double.parseDouble(chunks[1]),Integer.parseInt(chunks[2]));
 
                 // Store it in the ArrayList
                 items.add(item);

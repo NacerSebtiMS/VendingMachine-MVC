@@ -30,7 +30,7 @@ public class VendingMachineController {
     public void run() throws CannotOpenFile, InsufficientFundsException, NoItemInventoryException{
         // Main loop use view functions for the display
         boolean machineOn = true;
-        float money;
+        double money;
         int choice;
         Change change;
         while(machineOn){
@@ -69,7 +69,7 @@ public class VendingMachineController {
         }
     }
     
-    private float inputMoney(){
+    private double inputMoney(){
         return this.view.askForMoney();
     }
     
@@ -81,7 +81,7 @@ public class VendingMachineController {
         return this.view.askForChoice(listSize) - 1;
     }
     
-    private float insufficientFunds(float amountIn){
+    private double insufficientFunds(double amountIn){
         return this.view.notEnoughMoney(amountIn);
     }
     
