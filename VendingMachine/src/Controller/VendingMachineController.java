@@ -42,14 +42,22 @@ public class VendingMachineController {
                 turnOff();
             } else {
                 choice = menuChoice(items.size());
-                do{                 
-                    change = service.computeChange( money, items.get(choice).getCost() );
-                    if(change.getDollars() == -1){
-                        money += insufficientFunds(money);
-                    }
-                }while(change.getDollars() == -1);
-                confirmPurchase( items.get(choice) );
-                displayChange(change);
+                if(choice==-1){
+                    machineOn = false;
+                    turnOff();
+                    change = new Change(0);
+                } else {
+                    do{                 
+                        change = service.computeChange( money, items.get(choice).getCost() );
+                        if(change.getDollars() == -1){
+                            money += insufficientFunds(money);
+                        }
+                    }while(change.getDollars() == -1);
+                }
+                if(choice !=-1){
+                    confirmPurchase( items.get(choice) );
+                    displayChange(change);
+                }
             }
         }
     }
