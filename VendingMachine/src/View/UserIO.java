@@ -30,7 +30,7 @@ public class UserIO implements UserIOInterface {
     }
     
     @Override
-    public BigDecimal readDouble(String msgPrompt)
+    public BigDecimal readBigDecimal(String msgPrompt)
     {
         boolean invalidInput = true;
         BigDecimal num = BigDecimal.ZERO;
@@ -47,11 +47,11 @@ public class UserIO implements UserIOInterface {
     }
     
     @Override
-    public BigDecimal readDouble(String msgPrompt, BigDecimal min)
+    public BigDecimal readBigDecimal(String msgPrompt, BigDecimal min)
     {
         BigDecimal result;
         do {
-            result = readDouble(msgPrompt);
+            result = readBigDecimal(msgPrompt);
         } while (result.compareTo(min)<0);
 
         return result;
