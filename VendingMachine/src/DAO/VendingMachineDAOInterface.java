@@ -21,4 +21,5 @@ public interface VendingMachineDAOInterface {
     // Data maanagment
     public void updateItem(String itemName, int left); // Updates an item, we will just remove one from the stock
     public Item getSpecificItem(String itemName); // Gets a specific item using it's name from the ArrayList
+    public ArrayList<Item> displayableItemDetailList();
 }

@@ -6,8 +6,10 @@
 package ServiceLayer;
 
 import DAO.CannotOpenFile;
+import DAO.VendingMachineAudit;
 import DAO.VendingMachineDAO;
 import DTO.Item;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,8 +17,9 @@ import DTO.Item;
  */
 public class VendingMachineServiceLayer implements VendingMachineServiceLayerInterface {
     VendingMachineDAO dao;
+    VendingMachineAudit log;
     
-    VendingMachineServiceLayer() throws CannotOpenFile{
+    public VendingMachineServiceLayer() throws CannotOpenFile{
         this.dao = new VendingMachineDAO();
     }
 
@@ -26,18 +29,29 @@ public class VendingMachineServiceLayer implements VendingMachineServiceLayerInt
     }
 
     @Override
-    public void updateItem(String itemName) throws NoItemInventoryException {
+    public void updateItem(String itemName) throws NoItemInventoryException, CannotOpenFile {
         Item i = getSpecificItem(itemName);
         if(i.getLeft()-1 < 0){
             throw new NoItemInventoryException("Not enough items in inventory.");
         } else {
             dao.updateItem(itemName, i.getLeft()-1);
+            log.recordSale(i);
         }
     }
 
     @Override
     public Item getSpecificItem(String itemName) {
         return this.dao.getSpecificItem(itemName);
+    }
+
+    @Override
+    public ArrayList<Item> displayableItemDetailList() {
+        return this.dao.displayableItemDetailList();
+    }
+
+    @Override
+    public void turnOff() throws CannotOpenFile {
+        this.dao.saveChangesInStorage();
     }
     
 }

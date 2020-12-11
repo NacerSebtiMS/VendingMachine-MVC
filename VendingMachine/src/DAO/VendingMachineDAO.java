@@ -94,5 +94,14 @@ public class VendingMachineDAO implements VendingMachineDAOInterface {
         }
         return items.get(index);    
     }
-
+    
+    public ArrayList<Item> displayableItemDetailList(){
+        ArrayList<Item> displayableItems = new ArrayList<>();
+        for(Item i : this.items){
+            if(i.getLeft()>0){
+                displayableItems.add(i);
+            }
+        }
+        return displayableItems;
+    }
 }
