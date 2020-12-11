@@ -47,7 +47,7 @@ public class VendingMachineController {
                     turnOff();
                     change = new Change(0);
                 } else {
-                    do{                 
+                    do{
                         change = service.computeChange( money, items.get(choice).getCost() );
                         if(change.getDollars() == -1){
                             money += insufficientFunds(money);

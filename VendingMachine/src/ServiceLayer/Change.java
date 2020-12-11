@@ -16,11 +16,11 @@ public class Change {
     int nickels; // 5 cents
     int pennies; // 1 cent
     
-    public Change(float input) throws InsufficientFundsException{
-        if(input<0){
+    public Change(int cents) throws InsufficientFundsException{
+        if(cents<0){
             throw new InsufficientFundsException("Not enough funds.");
         } else {
-            int cents = (int) (input*100);
+            //int cents = (int) (input*100);
             int[] change;
             
             change = euclideanDivision(cents,100);
